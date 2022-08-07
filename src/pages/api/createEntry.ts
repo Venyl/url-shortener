@@ -53,9 +53,8 @@ const createEntry = async (req: NextApiRequest, res: NextApiResponse) => {
         return;
     }
 
-    res.status(200).end();
-
     await prisma.shortLink.create({ data: { url, slug } });
+    res.status(200).end();
 };
 
 export default createEntry;

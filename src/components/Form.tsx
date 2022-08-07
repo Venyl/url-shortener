@@ -17,7 +17,7 @@ export const Form = () => {
 
         if (status === 200) {
             setColorType('success');
-            setNoti(`Success! Your URL: https://url-shortener-one-eta.vercel.app/${slug}`);
+            setNoti(`Success! Your URL: https://url-shortener-venyl.vercel.app/api/${slug}`);
             setSlug('');
             setUrl('');
             return;
