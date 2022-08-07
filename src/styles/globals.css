@@ -13,4 +13,12 @@ body {
     .input {
         @apply outline-none bg-main300 text-lime-100 font-light px-2 py-1;
     }
+
+    .error {
+        @apply bg-red-200 text-red-800 outline-red-800;
+    }
+
+    .success {
+        @apply bg-lime-200 text-main500 outline-lime-900;
+    }
 }

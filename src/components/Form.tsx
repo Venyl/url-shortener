@@ -1,9 +1,11 @@
 import { Dispatch, FormEvent, SetStateAction, useState } from 'react';
+import { set } from 'zod';
 
 export const Form = () => {
     const [url, setUrl] = useState('');
     const [slug, setSlug] = useState('');
-    const [error, setError] = useState('');
+    const [noti, setNoti] = useState('');
+    const [colorType, setColorType] = useState('success');
 
     async function createEntry() {
         const res = await fetch('/api/createEntry', {
@@ -14,11 +16,15 @@ export const Form = () => {
         console.log(status);
 
         if (status === 200) {
-            setError('');
+            setColorType('success');
+            setNoti(`Success! Your URL: https://url-shortener-one-eta.vercel.app/${slug}`);
+            setSlug('');
+            setUrl('');
             return;
         }
         const message = await res.text();
-        setError(message);
+        setColorType('error');
+        setNoti(message);
     }
 
     function handleInput(
@@ -30,9 +36,9 @@ export const Form = () => {
 
     return (
         <div className="flex flex-col space-y-4 max-w-3xl grow ">
-            <div className={`flex justify-center ${!error && 'invisible'}`}>
-                <p className="bg-red-200 text-red-700 px-5 py-2 rounded-md outline outline-1 outline-red-800">
-                    {error}
+            <div className={`flex justify-center ${!noti && 'invisible'}`}>
+                <p className={`px-5 py-2 rounded-md outline outline-1 ${colorType}`}>
+                    {noti || '&nbsp;'}
                 </p>
             </div>
             <div className="flex flex-col justify-center items-center gap-4">
