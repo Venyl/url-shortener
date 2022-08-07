@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    background-color: hsl(240, 10%, 10%);
+    background-image: url('/background.svg');
+    color: white;
+    font-family: Heebo;
+}
+
+@layer components {
+    .input {
+        @apply outline-none bg-main300 text-lime-100 font-light px-2 py-1;
+    }
+}
